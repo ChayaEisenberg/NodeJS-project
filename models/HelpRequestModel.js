@@ -3,10 +3,12 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const HelpRequestSchema = new Schema({
-    
-    ProblemDescription : String,
-    PhoneNumber : String
-
+    ProblemType: Number,
+    ProblemDescription: String,
+    PhoneNumber: String,
+    Status: Number,
+    Urgency: Number,
+    ID: Number
 },
 {versionKey:false});
 

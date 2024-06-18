@@ -9,7 +9,6 @@ class BaseController {
     async getAll(req, res, next) {
         try {
             const response = await this.service.getAll(req.query);
-            //to do  - status code accoring to result
             return res.status(200).json(response);
         }
         catch (e) {
@@ -18,10 +17,10 @@ class BaseController {
     }
 
     async get(req, res, next) {
-        const { id } = req.params;
+        const id = req.params.id;
         try {
             const response = await this.service.getById(id);
-            return res.status(response.statusCode).json(response);
+            return res.status(200).json(response);
         }
         catch (e) {
             next(e);
@@ -60,7 +59,4 @@ class BaseController {
         }
     }
 }
-
-//module.exports = BaseController;
-
 export default BaseController;

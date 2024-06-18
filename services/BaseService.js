@@ -3,28 +3,13 @@ class BaseService {
         this.repo = repo;
     }
 
-    async getAll() {
-      console.log(2);
-        
+    async getAll() {        
         return await this.repo.getAll();
-        // try {
-        //   const response = await this.service.getList(req.query);
-        //   return res.status(response.statusCode).json(response);
-        // }
-        // catch (e) {
-        //   next(e);
-        // }
       }
     
-      async get(id) {
-        // const { id } = req.params;
-        // try {
-        //   const response = await this.service.getById(id);
-        //   return res.status(response.statusCode).json(response);
-        // }
-        // catch (e) {
-        //   next(e);
-        // }
+      async getById(id) {
+        console.log(id+"service")
+        return await this.repo.get(id);
       }
     
       async insert(data) {

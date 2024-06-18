@@ -1,4 +1,5 @@
 import connect from './db.js';
+import aggregation from '../Pipelline/aggregation.js'
 class BaseRepo {
     constructor(model) {
         this.model = model;
@@ -7,25 +8,30 @@ class BaseRepo {
     }
 
     async getAll() {
-        console.log(1);
-        let vol = await this.model.find({}).exec();
-        console.log(vol);
-        return vol;
+        let agg = aggregation()
+        let data = await this.model.aggregate(agg).exec();
+        console.log(data);
+        return data;
 
     }
 
 
     async get(id) {
         try {
-            let item = await this.model.findById(id);
-            if (!item) {
-                let error = new Error('Item not found');
-                error.statusCode = 404;
-                throw error;
-            }
+            let agg = aggregation()
+            let data2 = await this.model.find({}).exec();
+            console.log("data2" + data2); 
+            
+            let data = await this.model.aggregate(agg).exec(); 
+            console.log(data);
+            let data1 = data.slice(0,2);
+            console.log(data1 + "data1");
+            data = data.findById(id);
+            console.log(data);
+            return data;  
+        }
 
-            return new HttpResponse(item);
-        } catch (errors) {
+        catch (errors) {
             throw errors;
         }
     }
