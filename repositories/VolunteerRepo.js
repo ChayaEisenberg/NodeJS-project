@@ -1,5 +1,5 @@
 
-import StudentModel from "../models/VolunteerModel.js";
+import VolunteerModel from "../models/VolunteerModel.js";
 import BaseRepo from "./BaseRepo.js";
 
 class VolunteerRepo extends BaseRepo {
@@ -9,4 +9,4 @@ class VolunteerRepo extends BaseRepo {
 }
 
 //module.exports = new StudentRepo();
-export default new VolunteerRepo(StudentModel);
+export default new VolunteerRepo(VolunteerModel);

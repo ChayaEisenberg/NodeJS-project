@@ -3,10 +3,10 @@ class BaseService {
         this.repo = repo;
     }
 
-    async getAll(filters) {
+    async getAll() {
       console.log(2);
         
-        return await this.repo.getAll(filters);
+        return await this.repo.getAll();
         // try {
         //   const response = await this.service.getList(req.query);
         //   return res.status(response.statusCode).json(response);
