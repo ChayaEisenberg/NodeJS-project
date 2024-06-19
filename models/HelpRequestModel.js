@@ -8,6 +8,7 @@ const HelpRequestSchema = new Schema({
     PhoneNumber: String,
     Status: Number,
     Urgency: Number,
+    VolunteerId: String,
     ID: Number
 },
 {versionKey:false});
@@ -15,5 +16,4 @@ const HelpRequestSchema = new Schema({
 
 // Compile model from schema
 const HelpRequestModel = mongoose.model("HelpRequestModel", HelpRequestSchema,"HelpRequest");
-console.log(HelpRequestModel);
 export default HelpRequestModel;

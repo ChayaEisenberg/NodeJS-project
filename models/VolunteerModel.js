@@ -5,12 +5,13 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const VolunteerSchema = new Schema({
+    Id: Number,
     FirstName: String,
-    LastName: String
+    LastName: String,
+    PhoneNuber: String,
+    Expertise: Number
 },{versionKey:false});
 
-
-// Compile model from schema
 const VolunteerModel = mongoose.model("VolunteerModel", VolunteerSchema,"Volunteers");
 console.log(VolunteerModel);
 export default VolunteerModel;

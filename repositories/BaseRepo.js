@@ -1,5 +1,6 @@
-import connect from './db.js';
-import aggregation from '../Pipelline/aggregation.js'
+import connect from '../db.js';
+import aggregation from '../Pipeline/requestPipeline.js'
+import filter from '../Pipeline/filters.js';
 class BaseRepo {
     constructor(model) {
         this.model = model;
@@ -7,9 +8,11 @@ class BaseRepo {
         connect();
     }
 
-    async getAll() {
-        let agg = aggregation()
+    async getAll(props) {
+        let subPipeline = filter(props);
+        let agg = aggregation(subPipeline);
         let data = await this.model.aggregate(agg).exec();
+        //let data = await this.model.find({}).exec();
         console.log(data);
         return data;
 
@@ -18,17 +21,16 @@ class BaseRepo {
 
     async get(id) {
         try {
-            let agg = aggregation()
-            let data2 = await this.model.find({}).exec();
-            console.log("data2" + data2); 
+
+            // let agg = aggregation()
+            // let data2 = await this.model.find({}).exec();
+            // console.log("data2" + data2); 
+            // let data = await this.model.aggregate(agg).exec(); 
             
-            let data = await this.model.aggregate(agg).exec(); 
-            console.log(data);
-            let data1 = data.slice(0,2);
-            console.log(data1 + "data1");
-            data = data.findById(id);
-            console.log(data);
-            return data;  
+             let data = await this.model.findById(id); 
+          
+             console.log(data+"111111111111111111111111");
+             return data;  
         }
 
         catch (errors) {
@@ -36,42 +38,6 @@ class BaseRepo {
         }
     }
 
-    async insert(data) {
-        try {
-            let item = await this.model.create(data);
-            if (item) {
-                return new HttpResponse(item);
-            } else {
-                throw new Error('Something wrong happened');
-            }
-        } catch (error) {
-            throw error;
-        }
-    }
-
-    async update(id, data) {
-        try {
-            let item = await this.model.findByIdAndUpdate(id, data, { new: true });
-            return new HttpResponse(item);
-        } catch (errors) {
-            throw errors;
-        }
-    }
-
-    async delete(id) {
-        try {
-            let item = await this.model.findByIdAndDelete(id);
-            if (!item) {
-                let error = new Error('Item not found');
-                error.statusCode = 404;
-                throw error;
-            } else {
-                return new HttpResponse(item, { deleted: true });
-            }
-        } catch (errors) {
-            throw errors;
-        }
-    }
 }
 
 //module.exports = BaseRepo;

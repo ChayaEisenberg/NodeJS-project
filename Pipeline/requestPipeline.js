@@ -1,4 +1,4 @@
-export default function aggregation(){
+export default function aggregation(subPipeline){
 const pipeline= 
     [
         {
@@ -40,9 +40,11 @@ const pipeline=
             'ProblemType': '$ProblemType.type', 
             'Urgency': '$Urgency.Level'
           }
-        }
+        },     
       ]
-   
-      return pipeline
 
+      subPipeline.forEach(element => {
+        pipeline.push(element);
+      });
+      return pipeline
     }
