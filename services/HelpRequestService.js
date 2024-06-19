@@ -4,11 +4,10 @@ class HelpRequestService extends BaseService {
     constructor(repo) {
         super(repo);
     }
-    async update(id,userId, data){
+    async update(id, data){
         try{
-            // data.Status = 2;
-            // data.VolunteerId = id;
-            return await this.repo.update(id, userId,data);
+            const d = await this.repo.update(id,data);
+            return d;
         }
         catch(errors){
             console.log(errors);

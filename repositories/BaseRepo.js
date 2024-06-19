@@ -15,7 +15,6 @@ class BaseRepo {
         //let data = await this.model.find({}).exec();
         console.log(data);
         return data;
-
     }
 
 
