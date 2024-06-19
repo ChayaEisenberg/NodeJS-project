@@ -14,7 +14,7 @@ The project follows REST principles, with a layered architecture: a DB layer for
   
 ## Installation
 
-1. Clone the repository: git clone https://github.com/pessiMargalit/nodejs-campaign.git
+1. Clone the repository: git clone https://github.com/ChayaEisenberg/NodeJS-project.git
 2. Install the dependencies: npm install
 3. Configure the environment variables by creating a .env file based on the provided .env .
 4. Set up the database by running the necessary migrations and seeds.
