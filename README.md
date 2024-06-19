@@ -1,6 +1,5 @@
 <h1>Server side project in nodeJS</h1>
-##rg
-י##
+#hgdfh
 In this project, I developed server-side code in Node.js for a system that coordinates between volunteers and help seekers.
 The system includes three main screens: 
 a list of open help requests with filtering options by location, status, and priority; 
