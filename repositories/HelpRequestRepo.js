@@ -6,13 +6,9 @@ class HelpRequestRepo extends BaseRepo {
         super(model);
     }
 
-    async update(id, userId, data) {
+    async update(id, data) {
         try {
-            // let da = await this.model.Schema
-            // da.Status = 2;
-            // da.VolunteerId = userId;
             let request = await this.model.findByIdAndUpdate(id, data);
-            console.log(request + " updated");
             return request;
         }
         catch (errors) {
@@ -20,6 +16,5 @@ class HelpRequestRepo extends BaseRepo {
             throw new Error("An error occurred while trying to update the request's status. Please try again later.");
         }
     }
-
 }
 export default new HelpRequestRepo(HelpRequestModel);
